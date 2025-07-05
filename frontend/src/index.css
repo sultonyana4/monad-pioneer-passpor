@@ -1,0 +1,65 @@
+/* 1. Impor font modern (Inter) dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+/* 2. Aktifkan dasar-dasar Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 3. Definisikan variabel warna dan font untuk tema yang konsisten */
+@layer base {
+  :root {
+    --font-sans: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+    
+    /* Warna Tema Gelap (Dark Mode) */
+    --color-background: #0D1117; /* Sedikit kebiruan, seperti GitHub */
+    --color-text-primary: #E6EDF3; /* Putih lembut */
+    --color-text-secondary: #8B949E; /* Abu-abu untuk teks pendukung */
+    --color-accent: #58A6FF; /* Biru cerah sebagai aksen */
+  }
+
+  /* 4. Atur gaya dasar untuk seluruh halaman (global style) */
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+
+    /* Efek Latar Belakang Aurora yang Bergerak Halus */
+    background-image: 
+      radial-gradient(at 40% 20%, hsla(212, 100%, 74%, 0.1) 0px, transparent 50%),
+      radial-gradient(at 80% 20%, hsla(267, 100%, 60%, 0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsla(339, 100%, 70%, 0.1) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, hsla(189, 100%, 56%, 0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 0%, hsla(343, 100%, 76%, 0.15) 0px, transparent 50%);
+    background-size: 200% 200%;
+    animation: gradient-animation 15s ease infinite;
+  }
+
+  /* Styling untuk link agar konsisten dengan tema */
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  a:hover {
+    opacity: 0.8;
+  }
+}
+
+/* 5. Definisikan animasi untuk latar belakang */
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
